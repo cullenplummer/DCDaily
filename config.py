@@ -57,7 +57,7 @@ def default_modules():
 # shape stable now is what makes that later swap painless.
 SUBSCRIBERS = [
     {
-        "email": "you@example.com",
+        "email": "cullenplummer@gmail.com",
         "name": "You",
         "modules": default_modules(),
     },
