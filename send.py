@@ -33,7 +33,9 @@ def send(to_email: str, to_name: str, subject: str, html: str) -> bool:
             },
             timeout=30,
         )
-        resp.raise_for_status()
+        if resp.status_code >= 400:
+            print(f"[send] FAILED -> {to_email}: HTTP {resp.status_code}: {resp.text}", file=sys.stderr)
+            return False
         print(f"[send] OK -> {to_email}", file=sys.stderr)
         return True
     except Exception as e:
