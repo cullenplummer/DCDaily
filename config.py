@@ -21,7 +21,7 @@ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 # in any bulk email, even free ones, the moment this goes beyond you two.
 # Fill these before adding any third subscriber.
 SENDER_NAME = "DC Daily"
-SENDER_EMAIL = "you@yourdomain.com"          # must be a Brevo-verified sender
+SENDER_EMAIL = "cullenplummer@gmail.com"          # must be a Brevo-verified sender
 PHYSICAL_ADDRESS = "PO Box / address here"   # required for CAN-SPAM at scale
 
 # ---- The module registry ----
