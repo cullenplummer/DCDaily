@@ -3,7 +3,7 @@ import sys
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from config import SENDER_NAME, SENDER_EMAIL
+from config import Cullen Plummer, cullenplummer@gmail.com
 
 SMTP_HOST = "smtp-relay.brevo.com"
 SMTP_PORT = 587
