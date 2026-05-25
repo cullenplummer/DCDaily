@@ -20,6 +20,7 @@ import feedparser
 import requests
 from .base import Section, Item
 from config import ANTHROPIC_API_KEY
+from .llm import ask_claude
 
 FEEDS = [
     ("Reuters Business", "https://www.reutersagency.com/feed/?best-topics=business-finance"),
@@ -86,25 +87,7 @@ def _simplified(raw):
         f"HEADLINES:\n{listing}"
     )
 
-    resp = requests.post(
-        "https://api.anthropic.com/v1/messages",
-        headers={
-            "x-api-key": ANTHROPIC_API_KEY,
-            "anthropic-version": "2023-06-01",
-            "content-type": "application/json",
-        },
-        json={
-            "model": "claude-opus-4-7",
-            "max_tokens": 600,
-            "messages": [{"role": "user", "content": prompt}],
-        },
-        timeout=TIMEOUT,
-    )
-    resp.raise_for_status()
-    data = resp.json()
-    text = "".join(
-        b.get("text", "") for b in data.get("content", []) if b.get("type") == "text"
-    ).strip()
+    text = ask_claude(prompt, max_tokens=600)
 
     items = [Item(title="", blurb=text), Item(title="", blurb="—")]
     for it in raw[:5]:
